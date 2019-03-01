@@ -9,7 +9,8 @@ const baseConf = (_path) => {
     // and add path and name to entry array
     const VENDORS_NAME = 'vendors';
     const entry = {
-        index: ['babel-polyfill', './src/index/index.js']
+        index: ['babel-polyfill', './src/index/index.js'],
+        'lesson_11': ['./src/lesson_11/lesson_11.js'],
     };
 
     const plugins = Object.keys(entry).reduce((acc, name) => {
