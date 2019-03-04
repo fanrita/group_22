@@ -1,0 +1,39 @@
+@import 'styles/variables';
+
+* {
+    box-sizing: border-box;
+}
+
+.light {
+    padding: 20px 0;
+    width: $size;
+    height: $size;
+    border: 2px solid black;
+    border-radius: 100%;
+    background: gray;
+    font-size: 10px;
+}
+
+.greet-widget {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 50px;
+}
+
+.modal-section {
+    &__modal {
+        position: absolute;
+        display: none;
+        width: $modal_size;
+        height: $modal_size;
+        border: 2px solid black;
+        &__button {
+            position: absolute;
+            botton: 0;
+            right: 0;
+
+        }
+    }
+
+}

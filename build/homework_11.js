@@ -60,41 +60,41 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 335);
+/******/ 	return __webpack_require__(__webpack_require__.s = 339);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 335:
+/***/ 339:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(336);
+module.exports = __webpack_require__(340);
 
 
 /***/ }),
 
-/***/ 336:
+/***/ 340:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _dom = __webpack_require__(337);
+var _traffic_light = __webpack_require__(341);
 
-__webpack_require__(338);
+__webpack_require__(342);
 
-var widgets = document.querySelectorAll('.greet-widget');
+var lights = document.querySelectorAll('.light');
 
 var _iteratorNormalCompletion = true;
 var _didIteratorError = false;
 var _iteratorError = undefined;
 
 try {
-    for (var _iterator = widgets[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var widgetElement = _step.value;
+    for (var _iterator = lights[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var light = _step.value;
 
-        console.log(widgetElement);
-        (0, _dom.greetWidget)(widgetElement);
+        console.log(light);
+        (0, _traffic_light.trafficLight)(light);
     }
 } catch (err) {
     _didIteratorError = true;
@@ -113,7 +113,7 @@ try {
 
 /***/ }),
 
-/***/ 337:
+/***/ 341:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -122,44 +122,78 @@ try {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-function greetWidget(rootElement) {
-    var button = rootElement.querySelector('.greet-widget__btn');
-    var title = rootElement.querySelector('.greet-widget__title');
+function trafficLight(light) {
+    var buttons = light.querySelectorAll('.light__btn');
 
-    var isActive = true;
+    var _loop = function _loop(button) {
+        button.onclick = function () {
+            switchOn(button);
+        };
+    };
 
-    button.onclick = toggle;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
 
-    function toggle() {
-        if (isActive) {
-            toggleOff();
-        } else {
-            toggleOn();
+    try {
+        for (var _iterator = buttons[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var button = _step.value;
+
+            _loop(button);
+        }
+    } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+    } finally {
+        try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+                _iterator.return();
+            }
+        } finally {
+            if (_didIteratorError) {
+                throw _iteratorError;
+            }
         }
     }
 
-    function toggleOn() {
+    function switchOn(button) {
+        switchOff();
         button.classList.add('btn_active');
-        rootElement.classList.add('greet-widget_active');
-        title.classList.add('greet-widget__title_active');
-        isActive = true;
     }
 
-    function toggleOff() {
-        button.classList.remove('btn_active');
-        rootElement.classList.remove('greet-widget_active');
-        title.classList.remove('greet-widget__title_active');
-        isActive = false;
-    }
+    function switchOff() {
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
 
-    toggle();
+        try {
+            for (var _iterator2 = buttons[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var button = _step2.value;
+
+                button.classList.remove('btn_active');
+            }
+        } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                    _iterator2.return();
+                }
+            } finally {
+                if (_didIteratorError2) {
+                    throw _iteratorError2;
+                }
+            }
+        }
+    }
 }
 
-exports.greetWidget = greetWidget;
+exports.trafficLight = trafficLight;
 
 /***/ }),
 
-/***/ 338:
+/***/ 342:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

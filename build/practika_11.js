@@ -60,106 +60,150 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 335);
+/******/ 	return __webpack_require__(__webpack_require__.s = 343);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 335:
+/***/ 343:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(336);
+module.exports = __webpack_require__(344);
 
 
 /***/ }),
 
-/***/ 336:
+/***/ 344:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _dom = __webpack_require__(337);
+var _logic = __webpack_require__(345);
 
-__webpack_require__(338);
+var _modal = __webpack_require__(346);
+
+__webpack_require__(347);
 
 var widgets = document.querySelectorAll('.greet-widget');
+var buttonOrder = document.querySelector('.modal-section__button_order');
+var buttonBuy = document.querySelector('.modal-section__button_buy');
 
 var _iteratorNormalCompletion = true;
 var _didIteratorError = false;
 var _iteratorError = undefined;
 
 try {
-    for (var _iterator = widgets[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-        var widgetElement = _step.value;
+  for (var _iterator = widgets[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var widget = _step.value;
 
-        console.log(widgetElement);
-        (0, _dom.greetWidget)(widgetElement);
-    }
+    console.log(widget);
+    (0, _logic.runLogic)(widget);
+  }
 } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
+  _didIteratorError = true;
+  _iteratorError = err;
 } finally {
-    try {
-        if (!_iteratorNormalCompletion && _iterator.return) {
-            _iterator.return();
-        }
-    } finally {
-        if (_didIteratorError) {
-            throw _iteratorError;
-        }
+  try {
+    if (!_iteratorNormalCompletion && _iterator.return) {
+      _iterator.return();
     }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
 }
+
+buttonOrder.onclick = function () {
+  (0, _modal.showModal)("Make Order");
+};
+
+buttonBuy.onclick = function () {
+  (0, _modal.showModal)("Buy All");
+};
 
 /***/ }),
 
-/***/ 337:
+/***/ 345:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-function greetWidget(rootElement) {
-    var button = rootElement.querySelector('.greet-widget__btn');
-    var title = rootElement.querySelector('.greet-widget__title');
+function runLogic(widget) {
+  var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "red";
 
-    var isActive = true;
+  var light = widget.querySelector('.light');
+  var btn = widget.querySelector('.btn');
 
-    button.onclick = toggle;
+  var isActive = true;
 
-    function toggle() {
-        if (isActive) {
-            toggleOff();
-        } else {
-            toggleOn();
-        }
+  btn.onclick = toggle;
+
+  function toggle() {
+    if (isActive) {
+      toggleOff();
+    } else {
+      toggleOn();
     }
+  }
 
-    function toggleOn() {
-        button.classList.add('btn_active');
-        rootElement.classList.add('greet-widget_active');
-        title.classList.add('greet-widget__title_active');
-        isActive = true;
-    }
+  function toggleOn() {
+    console.log('ffgg');
+    btn.innerHTML = "ON";
+    light.style.backgroundColor = color;
+    isActive = true;
+  }
 
-    function toggleOff() {
-        button.classList.remove('btn_active');
-        rootElement.classList.remove('greet-widget_active');
-        title.classList.remove('greet-widget__title_active');
-        isActive = false;
-    }
+  function toggleOff() {
+    btn.innerHTML = "OFF";
+    light.style.backgroundColor = "gray";
+    isActive = false;
+  }
 
-    toggle();
+  toggle();
 }
 
-exports.greetWidget = greetWidget;
+exports.runLogic = runLogic;
 
 /***/ }),
 
-/***/ 338:
+/***/ 346:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var showModal = exports.showModal = function showModal(text) {
+  var closeButton = document.querySelector('.modal-section__modal__button');
+  var modal = document.querySelector('.modal-section__modal');
+  var modalText = modal.querySelector('.modal-section__modal__text');
+
+  var isActive = false;
+
+  closeButton.onclick = function () {
+    if (isActive) {
+      modal.style.display = "none";
+    }
+  };
+
+  if (!isActive) {
+    modalText.innerHTML = text;
+    modal.style.display = "block";
+    isActive = true;
+  }
+};
+
+/***/ }),
+
+/***/ 347:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
