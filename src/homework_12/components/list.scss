@@ -1,0 +1,52 @@
+$border-radius: 8px;
+
+.list {
+    max-width: 450px;
+    margin: 0 auto;
+    border: 1px solid green;
+    padding: 1rem;
+    border-radius:$border-radius;
+    &__form {
+        padding: 1rem 0;
+    }
+
+    &__input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.7rem;
+        margin: 1rem 0;
+        border-radius: $border-radius;
+        background: rgba(0,0,0,.1);
+        outline: none;
+        border: 1px solid rgba(0,0,0,.1);
+        &_textarea {
+            height: 10rem;
+        }
+        &:focus {
+            border-color: blue;
+        }
+    }
+    &__button {
+        background: dodgerblue;
+        color: white;
+    }
+    &__items {
+        padding: 0;
+        &__item {
+            border-bottom: 1px solid grey;
+            padding: 1rem;
+            list-style: none;
+            &_author {
+                color: dodgerblue;
+            }
+            &_comment {
+                width: 50%;
+            }
+            &_time {
+                text-align: right;
+                color: dimgrey;
+                font-size: 14px;
+            }
+        }
+    }
+}
