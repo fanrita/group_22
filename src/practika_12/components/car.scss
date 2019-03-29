@@ -1,0 +1,11 @@
+.car {
+    &__container {
+        position: relative;
+        min-height: 200px;
+        &__car {
+            position: absolute;
+            min-height: 200px;
+        }
+
+    }
+}
